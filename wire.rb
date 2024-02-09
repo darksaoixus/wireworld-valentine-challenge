@@ -77,8 +77,15 @@ class Wireworld
     update_frame_data
   end
 
-  def update_frame_data
+  def update_frame_data()
     @frame_data.replace(@grid.map { |row| row.dup })
+  end
+
+  def frame_data_fetch_from_grid(*cells)
+    cells.each do |c|
+      cy, cx = c[0], c[1]
+      @frame_data[cy][cx] = @grid[cy][cx]
+    end
   end
 
   def clear_screen
@@ -87,6 +94,10 @@ class Wireworld
 
   def display
     puts @grid.collect(&:join)
+  end
+
+  def display_frame_data
+    puts @frame_data.collect(&:join)
   end
 
   def check_neighbors(data, row, col)
@@ -115,7 +126,7 @@ class Wireworld
     if found_wall
       @grid[ty][tx] = ELECTRON_HEAD
       @handled_heads[ty] = tx
-      update_frame_data
+      frame_data_fetch_from_grid([row, col], [ty, tx])
     else
       neighbor_conductors.each do |nc|
         nc_y, nc_x = nc[0], nc[1]
@@ -141,10 +152,11 @@ class Wireworld
         end
       end
     end
+
     @handled_heads.clear
   end
   
-  def run()
+  def run
     loop do
       clear_screen
       display
@@ -153,15 +165,16 @@ class Wireworld
     end
   end
 
-  """
-  def run
+  def debug_run
     loop do
+      clear_screen
       display
       tick
-      sleep 1
+      puts "\nFRAME DATA:"
+      display_frame_data
+      gets
     end
   end
-  """
   
   def grid_to_file(filename)
     File.open(filename, "w") do |file|
