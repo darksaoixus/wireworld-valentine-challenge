@@ -1,0 +1,21 @@
+xxxxxxxxxxxxxxxxxxxxxxxx
+x   W                  x
+x   =      ==          x
+x   =     =  =         x
+x   =     =   =        x
+x   =     =    =       x
+x   O     =     =      x
+x   .     =     =      x
+x   W      =.O==       x
+x     ==               x
+x=.O================W  x
+x     ==               x
+x   W      =.O==       x
+x   .     =     =      x
+x   O     =     =      x
+x   =     =    =       x
+x   =     =   =        x
+x   =     =  =         x
+x   =      ==          x
+x   W                  x
+xxxxxxxxxxxxxxxxxxxxxxxx
