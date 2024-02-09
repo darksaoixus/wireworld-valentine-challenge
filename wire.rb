@@ -89,6 +89,10 @@ class Wireworld
     puts @grid.collect(&:join)
   end
 
+  def display_frame_data
+    puts @frame_data.collect(&:join)
+  end
+
   def check_neighbors(data, row, col)
     tx = ty = 0
     neighbor_conductors = []
@@ -144,7 +148,7 @@ class Wireworld
     @handled_heads.clear
   end
   
-  def run()
+  def run
     loop do
       clear_screen
       display
@@ -153,15 +157,16 @@ class Wireworld
     end
   end
 
-  """
-  def run
+  def debug_run
     loop do
+      clear_screen
       display
       tick
-      sleep 1
+      puts "\nFRAME DATA:"
+      display_frame_data
+      gets
     end
   end
-  """
   
   def grid_to_file(filename)
     File.open(filename, "w") do |file|
